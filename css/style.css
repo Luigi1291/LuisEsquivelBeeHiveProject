@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.mainContainers{
+    border-width: 3px;
+    border-style: solid;
+    margin-top: 5px;
+}
+
+.titles{
+    margin-left: 5px;
+}
