@@ -2,51 +2,62 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>BeeHive Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BeeHive Project</title>
     <script src="js/manager/beesManager.js"></script>
     <script src="js/manager/postManager.js"></script>
     <script src="js/manager/albumManager.js"></script>
     <script src="js/manager/todosManager.js"></script>
-	<link rel="stylesheet" href="css/style.css">
+    <script src="js/basicFunctions.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-	<div id="appComponent">
-        <div id="headerComponent" class="header">
+    <div id="appComponent" class="container">
+        <div id="headerComponent" class="header-container">
             <h1>The BeeHive</h1>
+            <img id="ham-icon" role="button" class="ham-icon" onclick="displayMenu()" src="/images/menu-circle-512.png"
+                height="55" width="55">
         </div>
-        
-        <!-- BEES -->
-        <div id="beesComponent" class="mainContainers">
-            <h2 class="titles">Bees</h2>
-            <div id="beeComponent"></div>
-        </div>
+        <div id="ham-menu" class="container-ham-menu">
+            <!-- BEES -->
+            <div id="beesComponent" class="mainContainers">
+                <h2 class="titles">Bees</h2>
+                <div id="beeComponent"></div>
+            </div>
 
-        <!-- BEE'S POST -->
-        <div id="postsComponent" class="mainContainers">
-            <h2 class="titles">Bee's Posts</h2>
-            <div id="postComponent">
-                <div id="commentComponent"></div>
+            <!-- BEE'S POST -->
+            <div id="postsComponent" class="mainContainers">
+                <h2 class="titles">Bee's Posts</h2>
+                <div id="postComponent">
+                    <div id="commentComponent"></div>
+                </div>
+            </div>
+
+            <!-- BEE'S ALBUM  -->
+            <div id="albumComponent" class="mainContainers">
+                <h2 class="titles">Bee's Album</h2>
+                <div id="photoComponent">
+                </div>
+            </div>
+
+            <!-- BEE'S TO DOS  -->
+            <div id="todosComponent" class="mainContainers">
+                <h2 class="titles">Bee's Todos</h2>
+                <div id="todoComponent">
+                </div>
             </div>
         </div>
-
-        <!-- BEE'S ALBUM  -->
-        <div id="albumComponent" class="mainContainers">
-            <h2 class="titles">Bee's Album</h2>
-            <div id="photoComponent">    
-            </div>
+        <div id="content" class="container-content" onclick="hideMenu()">
+            <ul>
+                <li>
+                    <h3>temporibus sit alias delectus eligendi possimus magni</h3>
+                </li>
+            </ul>
         </div>
-
-        <!-- BEE'S TO DOS  -->
-        <div id="todosComponent" class="mainContainers">
-            <h2 class="titles">Bee's Todos</h2>
-            <div id="todoComponent">
-            </div>
-        </div>
-	</div>
+    </div>
 </body>
 
 </html>
