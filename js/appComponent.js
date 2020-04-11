@@ -10,12 +10,14 @@ function init() {
 	//this.dataManager.startPostsDownload();
 
 	this.beesManager = new beesManager(this);
+	this.beesManager.downloadBees();
+	
 	this.postsManager = new postsManager(this);
 	this.albumsManager = new albumsManager(this);	
 	this.todosManager = new todosManager(this);
 
 }
-
+/*
 function displayMenu(){
    		document.getElementById('ham-menu').attr('display','flex');
-	}
+	} */
