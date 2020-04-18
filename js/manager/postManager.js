@@ -88,5 +88,6 @@ postsManager.prototype.processCommentsResponse = function (text) {
 
 postsManager.prototype.loadUserPosts = function (bee) {
     console.log(bee);
-    postsComponent(this.appContainer, this.posts, bee.id);
+    this.appContainer.innerHTML = '';
+    new postsComponent(this.appContainer, this.posts, bee.id);
 }
