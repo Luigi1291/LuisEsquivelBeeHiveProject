@@ -13,7 +13,14 @@
     <script src="js/components/beeComponents/beesComponent.js"></script>
     <script src="js/models/bee.js"></script>
 
+    <!--POSTS JS-->
     <script src="js/manager/postManager.js"></script>
+    <script src="js/components/postComponents/postComponent.js"></script>
+    <script src="js/components/postComponents/postsComponent.js"></script>
+    <script src="js/components/postComponents/commentComponent.js"></script>
+    <script src="js/models/post.js"></script>
+    <script src="js/models/beeComment.js"></script>
+
     <script src="js/manager/albumManager.js"></script>
     <script src="js/manager/todosManager.js"></script>
     <script src="js/basicFunctions.js"></script>
@@ -23,7 +30,7 @@
 <body>
     <div id="appComponent" class="mainContainer">
         <div id="headerComponent" class="header-container">
-            <div class="backContainer">
+            <div id='btnBackContainer' class="backContainerHide" onclick="displayBees()">
                 <img role="button" src="images/backBtn.png" class="backButton">
             </div>
             <div class="titleContainer">
@@ -64,8 +71,6 @@
             <div id="postsComponent" class="containers" style="display: none;">
                 <h2 class="titles">Bee's Posts</h2>
                 <div id="postComponent">
-                    <div id="commentComponent">
-                    </div>
                 </div>
             </div>
 

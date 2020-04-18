@@ -5,7 +5,7 @@ function beesManager(appManager) {
 }
 
 beesManager.prototype.loadBees = function (bees) {
-    beesComponent(this.appContainer, bees);
+    beesComponent(this.appContainer, bees, this.onClickPosts.bind(this));
 }
 
 beesManager.prototype.downloadBees = function() {
@@ -22,7 +22,7 @@ beesManager.prototype.processRequest = function (e) {
         console.log(request);
         switch (request.status) {
             case 200:
-                console.log('BeeUsers Download Successful');
+                console.log('BeeUsers Downloaded Successfully');
                 this.processResponse(request.responseText);
                 break;
             case 404:
@@ -47,3 +47,11 @@ beesManager.prototype.processResponse = function (text) {
 
     this.loadBees(this.bees);
 };
+
+beesManager.prototype.onClickPosts = function (bee) {
+    hideBees();
+    var beesPage = document.getElementById('postsComponent');
+    beesPage.style.display = "block";
+
+    this.appManager.postsManager.loadUserPosts(bee);
+}

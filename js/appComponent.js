@@ -13,6 +13,8 @@ function init() {
 	this.beesManager.downloadBees();
 	
 	this.postsManager = new postsManager(this);
+	this.postsManager.downloadPosts();
+
 	this.albumsManager = new albumsManager(this);	
 	this.todosManager = new todosManager(this);
 
