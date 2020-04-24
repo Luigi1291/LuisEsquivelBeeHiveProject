@@ -15,7 +15,9 @@ function init() {
 	this.postsManager = new postsManager(this);
 	this.postsManager.downloadPosts();
 
-	this.albumsManager = new albumsManager(this);	
+	this.albumsManager = new albumsManager(this);
+	this.albumsManager.downloadAlbums();	
+
 	this.todosManager = new todosManager(this);
 
 }

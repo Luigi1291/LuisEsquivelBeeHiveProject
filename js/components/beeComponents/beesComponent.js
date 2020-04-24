@@ -1,8 +1,8 @@
-function beesComponent(container, bees, onClickPosts){
+function beesComponent(container, bees, onClickPosts, onClickAlbums){
     this.container =  container;
     
     bees.forEach(bee => {
-        var newUIBee = new beeComponent(bee, onClickPosts);
+        var newUIBee = new beeComponent(bee, onClickPosts, onClickAlbums);
     
         this.container.appendChild(newUIBee);    
     });

@@ -1,4 +1,4 @@
-function beeComponent(bee, onClickPosts){
+function beeComponent(bee, onClickPosts, onClickAlbums){
     this.bee = bee;
     var beeContainer = document.createElement('div');
     beeContainer.className = 'beeComponent';
@@ -49,15 +49,15 @@ function beeComponent(bee, onClickPosts){
     var btnPost = document.createElement('div');
     btnPost.className = 'button';
     btnPost.innerText = 'Posts';
-
     this.onClickPosts = onClickPosts;
     btnPost.onclick = this.onClickPostCallBack.bind(this);
-
     buttonsContainer.appendChild(btnPost);
 
     var btnAlbum = document.createElement('div');
     btnAlbum.className = 'button';
     btnAlbum.innerText = 'Album';
+    this.onClickAlbums = onClickAlbums;
+    btnAlbum.onclick = this.onClickAlbumCallBack.bind(this);
     buttonsContainer.appendChild(btnAlbum);
 
     var btnTodo = document.createElement('div');
@@ -72,4 +72,8 @@ function beeComponent(bee, onClickPosts){
 
 beeComponent.prototype.onClickPostCallBack = function (){
     this.onClickPosts(this.bee);
+}
+
+beeComponent.prototype.onClickAlbumCallBack = function (){
+    this.onClickAlbums(this.bee);
 }

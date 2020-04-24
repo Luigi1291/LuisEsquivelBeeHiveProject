@@ -5,7 +5,7 @@ function beesManager(appManager) {
 }
 
 beesManager.prototype.loadBees = function (bees) {
-    beesComponent(this.appContainer, bees, this.onClickPosts.bind(this));
+    beesComponent(this.appContainer, bees, this.onClickPosts.bind(this), this.onClickAlbums.bind(this));
 }
 
 beesManager.prototype.downloadBees = function() {
@@ -40,7 +40,7 @@ beesManager.prototype.processResponse = function (text) {
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             var bee = data[key];
-            console.log(bee);
+            //console.log(bee);
             this.bees.push(new Bee(bee.id, bee.name, bee.email, bee.phone, bee.username, bee.address.city));
         }
     }
@@ -50,8 +50,16 @@ beesManager.prototype.processResponse = function (text) {
 
 beesManager.prototype.onClickPosts = function (bee) {
     hideBees();
-    var beesPage = document.getElementById('postsComponent');
-    beesPage.style.display = "block";
+    var postsPage = document.getElementById('postsComponent');
+    postsPage.style.display = "block";
 
     this.appManager.postsManager.loadUserPosts(bee);
+}
+
+beesManager.prototype.onClickAlbums = function (bee) {
+    hideBees();
+    var albumsPage = document.getElementById('albumsComponent');
+    albumsPage.style.display = "block";
+    
+    this.appManager.albumsManager.loadAlbumsUser(bee);
 }
