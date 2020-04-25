@@ -270,3 +270,75 @@ p.photoTitle{
 
 
 /***** ALBUM PAGE STYLE END *****/
+
+/***** OVERLAY PAGES STYLE *****/
+.newPostOverlay{
+    position: fixed;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.overlay-textContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 30%;
+    margin: 20px;
+}
+
+.overlay-Title{
+    width: 100%;
+    color: lightyellow;
+    height: 0px;
+}
+
+.overlay-text {
+    color: lightyellow;
+    height: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    margin-right: 10px;
+}
+
+.overlay-input{
+    background-color: transparent;
+    z-index: 2;
+    border-color: lightyellow;
+    color: lightyellow;
+    height: 25px;
+    width: 80%;
+}
+
+.overlay-button-cancel, .overlay-button-submit{
+    height: 25px;
+    background-color: lightyellow;
+    color: black;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay-button-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.overlay-button-submit{
+    width: 50%;
+}
+
+.overlay-button-cancel{
+    width: 40%;
+}
+/***** OVERLAY PAGES STYLE END *****/

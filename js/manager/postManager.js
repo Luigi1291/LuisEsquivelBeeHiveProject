@@ -88,5 +88,18 @@ postsManager.prototype.processCommentsResponse = function (text) {
 
 postsManager.prototype.loadUserPosts = function (bee) {
     this.appContainer.innerHTML = '';
-    new postsComponent(this.appContainer, this.posts, bee.id);
+    new postsComponent(this.appContainer, this.posts, bee, this.submitPost.bind(this));
+}
+
+postsManager.prototype.submitPost = function(post){
+    var url = 'https://beehive-270a2.firebaseio.com/data/posts.json';
+    var request = new XMLHttpRequest();
+    request.open('POST', url);
+    request.send(post);
+    console.log(request.response);
+    
+    //request.onreadystatechange = this.processPostsRequest.bind(this);
+
+    //this.appContainer.innerHTML = '';
+    //new postsComponent(this.appContainer, this.posts, post.userId);
 }

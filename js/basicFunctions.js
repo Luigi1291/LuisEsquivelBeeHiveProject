@@ -17,6 +17,9 @@ function displayBees(){
 
     var postsPage = document.getElementById('postsComponent');
     postsPage.style.display = "none";
+
+    var overlayContainer = document.getElementById('newPostComponent');
+    overlayContainer.innerHTML= "";
     
     var albumPage = document.getElementById('albumsComponent');
     albumPage.style.display = "none";
