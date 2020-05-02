@@ -1,11 +1,16 @@
-function postsComponent(container, posts, bee, submitPostCallBack){
-    this.container =  container;
-    this.userPosts = posts.filter(post => post.userId == bee.id);
-    this.newPostComponent = new newPostComponent(bee, submitPostCallBack, true);
+function postsComponent(container, posts, beeId, submitPostCallBack, submitCommentCallBack, loggedBee){
+    this.container = container;
+    this.userPosts = posts.filter(post => post.userId == beeId);
+    
+    this.newPostComponent = new newPostComponent(beeId, submitPostCallBack, 1, loggedBee);
+    this.newPostComponent.renderOverlay();
 
+    this.newCommentComponent = new newPostComponent('', submitCommentCallBack, 2, loggedBee);
+    this.newCommentComponent.renderOverlay();
+    
     if(this.userPosts.length > 0){
         this.userPosts.forEach(post => {
-            var newUIPost = new postComponent(post);
+            var newUIPost = new postComponent(post, this.newCommentComponent);
         
             this.container.appendChild(newUIPost);    
         });

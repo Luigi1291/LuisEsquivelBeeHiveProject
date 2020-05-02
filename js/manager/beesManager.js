@@ -2,10 +2,11 @@ function beesManager(appManager) {
     this.appManager = appManager;
     this.appContainer = document.getElementById('beeComponent');
     this.bees = [];
+    this.loggedBee = new Bee(0, 'Luis Esquivel', 'luis-1291@hotmail.com', '83028700', 'Luigimon', 'San Jose'); 
 }
 
 beesManager.prototype.loadBees = function (bees) {
-    beesComponent(this.appContainer, bees, this.onClickPosts.bind(this), this.onClickAlbums.bind(this));
+    beesComponent(this.appContainer, bees, this.onClickPosts.bind(this), this.onClickAlbums.bind(this), this.onClickToDos.bind(this));
 }
 
 beesManager.prototype.downloadBees = function() {
@@ -19,7 +20,7 @@ beesManager.prototype.downloadBees = function() {
 beesManager.prototype.processRequest = function (e) {
     var request = e.target;
     if (request.readyState === 4) {
-        console.log(request);
+        //console.log(request);
         switch (request.status) {
             case 200:
                 console.log('BeeUsers Downloaded Successfully');
@@ -44,7 +45,6 @@ beesManager.prototype.processResponse = function (text) {
             this.bees.push(new Bee(bee.id, bee.name, bee.email, bee.phone, bee.username, bee.address.city));
         }
     }
-
     this.loadBees(this.bees);
 };
 
@@ -53,7 +53,7 @@ beesManager.prototype.onClickPosts = function (bee) {
     var postsPage = document.getElementById('postsComponent');
     postsPage.style.display = "block";
 
-    this.appManager.postsManager.loadUserPosts(bee);
+    this.appManager.postsManager.loadUserPosts(bee.id);
 }
 
 beesManager.prototype.onClickAlbums = function (bee) {
@@ -62,4 +62,16 @@ beesManager.prototype.onClickAlbums = function (bee) {
     albumsPage.style.display = "block";
     
     this.appManager.albumsManager.loadAlbumsUser(bee);
+}
+
+beesManager.prototype.onClickToDos = function (bee) {
+    hideBees();
+    var albumsPage = document.getElementById('toDosComponent');
+    albumsPage.style.display = "block";
+    
+    this.appManager.todosManager.loadToDos(bee.id);
+}
+
+beesManager.prototype.getLoggedBee = function () {
+    return this.loggedBee;
 }

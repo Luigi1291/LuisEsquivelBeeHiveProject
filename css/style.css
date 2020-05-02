@@ -146,7 +146,7 @@ p.beeName{
     margin-top: 5px;
 
     color: black;
-    background-color: white;
+    background-color: lightyellow;
 }
 
 p.postTitle{
@@ -169,18 +169,21 @@ p.postBody{
     border-style: solid;
     margin: 5px;
     padding-bottom: 5px;
-    background-color: lightyellow;
+    background-color: whitesmoke;
+    width: 100%;
 }
 
 p.commentTitle{
     font-weight: bold;
     font-size: medium;
     margin: 5px;
+    width: 100%;
 }
 
 p.commentBody{
     font-size: small;
     margin: 5px;
+    width: 100%;
 }
 
 p.commentEmail{
@@ -225,9 +228,7 @@ p.commentEmail{
     border-color: black;
     border-width: 2px;
     border-style: solid;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 5px;
+    margin: 10px;
     background-color: black;
     color: white;
 }
@@ -267,9 +268,53 @@ p.photoTitle{
     width: 250px;
     display: flex;
 }
-
-
 /***** ALBUM PAGE STYLE END *****/
+
+/***** TODOS PAGE STYLE *****/
+.toDoComponent{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    margin: 10px;
+    background-color: lightyellow;
+    color: black;
+}
+
+.toDoTitle{
+    font-weight: bold;
+    font-size: large;
+    margin: 25px;
+    width: 40%;
+}
+
+.toDoButton{
+    height: 50px;
+    margin: 25px;
+    width: 30%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newToDoButton{
+    margin-top: 20px;
+    background-color: black;
+    font-size: large;
+    color: white;
+    width: 100%;
+    height: 40px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/***** TODOS PAGE STYLE END *****/
 
 /***** OVERLAY PAGES STYLE *****/
 .newPostOverlay{
@@ -277,7 +322,7 @@ p.photoTitle{
     align-items: center;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.95);
     z-index: 1;
     width: 100%;
     height: 100%;

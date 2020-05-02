@@ -19,7 +19,7 @@ function init() {
 	this.albumsManager.downloadAlbums();	
 
 	this.todosManager = new todosManager(this);
-
+	this.todosManager.downloadToDos();
 }
 /*
 function displayMenu(){

@@ -16,7 +16,7 @@ postsManager.prototype.downloadPosts = function() {
 postsManager.prototype.processPostsRequest = function (e) {
     var request = e.target;
     if (request.readyState === 4) {
-        console.log(request);
+        //console.log(request);
         switch (request.status) {
             case 200:
                 console.log('Posts Downloaded Successfully');
@@ -55,7 +55,7 @@ postsManager.prototype.downloadComments = function() {
 postsManager.prototype.processCommentsRequest = function (e) {
     var request = e.target;
     if (request.readyState === 4) {
-        console.log(request);
+        //console.log(request);
         switch (request.status) {
             case 200:
                 console.log('Comments Downloaded Successfully');
@@ -79,27 +79,46 @@ postsManager.prototype.processCommentsResponse = function (text) {
             this.comments.push(new BeeComment(comment.id, comment.postId, comment.name, comment.body, comment.email));
         }
     }
+    this.loadComments();
+};
+
+postsManager.prototype.loadComments = function(){
     //Map Comments with Posts 
     this.posts.forEach(post => {
         var postComments = this.comments.filter(comment => comment.postId == post.id);
         post.comments = postComments;
     });
-};
-
-postsManager.prototype.loadUserPosts = function (bee) {
-    this.appContainer.innerHTML = '';
-    new postsComponent(this.appContainer, this.posts, bee, this.submitPost.bind(this));
 }
 
-postsManager.prototype.submitPost = function(post){
-    var url = 'https://beehive-270a2.firebaseio.com/data/posts.json';
-    var request = new XMLHttpRequest();
-    request.open('POST', url);
-    request.send(post);
-    console.log(request.response);
-    
-    //request.onreadystatechange = this.processPostsRequest.bind(this);
+postsManager.prototype.loadUserPosts = function (beeId) {
+    this.appContainer.innerHTML = '';
+    new postsComponent(this.appContainer, this.posts, beeId, this.submitPost.bind(this), this.submitComment.bind(this), this.appManager.beesManager.getLoggedBee());
+}
 
-    //this.appContainer.innerHTML = '';
-    //new postsComponent(this.appContainer, this.posts, post.userId);
+postsManager.prototype.submitPost = function(pPost){
+    var newId = Math.max.apply(Math, this.posts.map(function(o) { return o.id; }));
+    pPost.id = newId+1;
+
+    this.posts.push(pPost);
+    
+    this.resetOverlay();
+    this.loadUserPosts(pPost.userId);
+}
+
+postsManager.prototype.submitComment = function(pComment){
+    var newId = Math.max.apply(Math, this.comments.map(function(o) { return o.id; }));
+    pComment.id = newId+1;
+
+    this.comments.push(pComment);
+    var userPost = this.posts.filter(post => post.id == pComment.postId)[0];
+    this.resetOverlay();
+    
+    //ReMapear Comentarios a los Posts
+    this.loadComments();
+    this.loadUserPosts(userPost.userId);
+}
+
+postsManager.prototype.resetOverlay = function(){
+    document.getElementById('newComponent').innerHTML = '';
+    document.getElementById('newComment').innerHTML = '';
 }

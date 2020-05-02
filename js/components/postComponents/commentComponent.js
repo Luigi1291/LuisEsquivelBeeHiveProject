@@ -1,4 +1,7 @@
-function commentComponent(postContainer, post){
+function commentComponent(postContainer, post, newCommentComponent){    
+    this.newCommentComponent = newCommentComponent;
+    this.post = post;
+
     post.comments.forEach(comment => {
         var commentContainer = document.createElement('div');
         commentContainer.className = 'commentComponent';
@@ -19,11 +22,17 @@ function commentComponent(postContainer, post){
         commentContainer.appendChild(email);
     
         postContainer.appendChild(commentContainer);
-
-        var newCommentButton = document.createElement('div');
-        newCommentButton.className = 'newCommentButton';
-        newCommentButton.innerText = "New Comment";
-
-        postContainer.appendChild(newCommentButton);
     });
+
+    var newCommentButton = document.createElement('div');
+    newCommentButton.className = 'newCommentButton';
+    newCommentButton.innerText = "New Comment";
+    
+    newCommentButton.onclick = this.sendPostId.bind(this);
+    postContainer.appendChild(newCommentButton);
+}
+
+commentComponent.prototype.sendPostId = function() {
+    this.newCommentComponent.updateEntry(this.post);
+    this.newCommentComponent.showNewCommentOverlay();
 }

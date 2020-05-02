@@ -1,18 +1,39 @@
-function newPostComponent(entry, submitCallBack, isNewPost){
-    var overlayContainer = document.getElementById('newPostComponent');
-
+function newPostComponent(entry, submitCallBack, overlayType, loggedBee){
+    var overlayContainer = document.getElementById('newComponent');
     this.overlayContainer = overlayContainer;
+
+    if(overlayType == 2){
+        this.overlayContainer = document.getElementById('newComment');
+    }
     this.entry = entry;
     this.submitCallBack = submitCallBack;
-    this.isNewPost = isNewPost;
+    this.overlayType = overlayType;
+    this.loggedBee = loggedBee;
+}
 
+newPostComponent.prototype.updateEntry = function(entry){
+    this.entry = entry;
+}
+
+newPostComponent.prototype.renderOverlay = function(){
     var textContainer = document.createElement('div');
     textContainer.className = 'overlay-textContainer';
     
-    var newPostText = document.createElement('p');
-    newPostText.className = 'overlay-Title';
-    newPostText.innerText = 'NEW POST';
-    textContainer.appendChild(newPostText);
+    var newText = document.createElement('p');
+    newText.className = 'overlay-Title';
+    switch (this.overlayType) {
+        case 1:
+            newText.innerText = 'NEW POST';
+            break;
+        case 2: 
+            newText.innerText = 'NEW COMMENT';
+            break;
+        case 3: 
+            newText.innerText = 'NEW TODO';
+            break;
+    }
+
+    textContainer.appendChild(newText);
 
     var title = document.createElement('p');
     title.className = 'overlay-text';
@@ -28,15 +49,18 @@ function newPostComponent(entry, submitCallBack, isNewPost){
     var body = document.createElement('p');
     body.className = 'overlay-text';
     body.innerText = 'Body';
-    textContainer.appendChild(body);
-
+    
     var inputBody = document.createElement('input');
     inputBody.className = 'overlay-input';
     inputBody.setAttribute('type','text');
     this.inputBody = inputBody;
-    textContainer.appendChild(inputBody);
     
-    overlayContainer.appendChild(textContainer);
+    if(this.overlayType != 3){
+        textContainer.appendChild(body);
+        textContainer.appendChild(inputBody);
+    }
+    
+    this.overlayContainer.appendChild(textContainer);
 
     var buttonContainer = document.createElement('div');
     buttonContainer.className = 'overlay-button-container';
@@ -45,6 +69,8 @@ function newPostComponent(entry, submitCallBack, isNewPost){
     btnCancel.className = 'overlay-button-cancel';
     btnCancel.innerText = 'Cancel';
     btnCancel.onclick = this.hideNewPostOverlay.bind(this);
+    this.showNewPostOverlay.bind(this);
+    
     buttonContainer.appendChild(btnCancel);
 
     var btnSubmit = document.createElement('div');
@@ -55,24 +81,35 @@ function newPostComponent(entry, submitCallBack, isNewPost){
     buttonContainer.appendChild(btnSubmit);
 
     textContainer.appendChild(buttonContainer);
-    overlayContainer.appendChild(textContainer);
+    this.overlayContainer.appendChild(textContainer);
 }
 
 newPostComponent.prototype.submitNewPost = function(){
     var newSubmit;
-    if(this.isNewPost){
-        newSubmit = new Post('',this.entry.id,this.inputTitle.value, this.inputBody.value,[]);    
-    } else
-    {
-        newSubmit = new BeeComment();
+    // 1 -> NewPost, 2-> NewComment 3-> NewToDo
+    switch (this.overlayType) {
+        case 1:
+            newSubmit = new Post('',this.entry,this.inputTitle.value, this.inputBody.value,[]);    
+            break;
+        case 2:
+            newSubmit = new BeeComment('', this.entry.id, this.inputTitle.value, this.inputBody.value, this.loggedBee.email);
+            break;
+        case 3:
+            newSubmit = new ToDo('',false,this.inputTitle.value, this.entry);
+            break;
     }
-    
+
     this.submitCallBack(newSubmit);
     this.hideNewPostOverlay();
 }
 
 newPostComponent.prototype.showNewPostOverlay = function (){
-    var overlayContainer = document.getElementById('newPostComponent');
+    var overlayContainer = document.getElementById('newComponent');
+    overlayContainer.style.display = 'flex';
+}
+
+newPostComponent.prototype.showNewCommentOverlay = function (){
+    var overlayContainer = document.getElementById('newComment');
     overlayContainer.style.display = 'flex';
 }
 

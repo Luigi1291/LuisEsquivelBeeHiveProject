@@ -1,4 +1,4 @@
-function postComponent(post){
+function postComponent(post, newCommentComponent){
     var postContainer = document.createElement('div');
     postContainer.className = 'postComponent';
 
@@ -18,7 +18,7 @@ function postComponent(post){
     postContainer.appendChild(containterText);
 
     //Adding comments UI
-    commentComponent(postContainer, post);
+    new commentComponent(postContainer, post, newCommentComponent);
 
     return postContainer;
 }

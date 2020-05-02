@@ -21,7 +21,7 @@ albumsManager.prototype.downloadAlbums = function() {
 albumsManager.prototype.processAlbumRequest = function (e) {
     var request = e.target;
     if (request.readyState === 4) {
-        console.log(request);
+        //console.log(request);
         switch (request.status) {
             case 200:
                 console.log('Albums Downloaded Successfully');
@@ -61,7 +61,7 @@ albumsManager.prototype.downloadPhotos = function() {
 albumsManager.prototype.processPhotoRequest = function (e) {
     var request = e.target;
     if (request.readyState === 4) {
-        console.log(request);
+        //console.log(request);
         switch (request.status) {
             case 200:
                 console.log('Photos Downloaded Successfully');
@@ -91,7 +91,7 @@ albumsManager.prototype.processPhotoResponse = function (text) {
 albumsManager.prototype.loadAlbumsUser = function(bee){
     var userAlbums = this.albums.filter(album => album.userId == bee.id);
 
-    //Map Photos with Albums 
+    //Map Photos with Albums
     userAlbums.forEach(album => {
         var photoAlbum = this.photos.filter(photo => photo.albumId == album.id);
         album.photos = photoAlbum;

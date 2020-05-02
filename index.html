@@ -30,7 +30,12 @@
     <script src="js/models/album.js"></script>
     <script src="js/models/photo.js"></script>
 
+    <!--TODO JS-->
     <script src="js/manager/todosManager.js"></script>
+    <script src="js/components/todoComponents/todosComponent.js"></script>
+    <script src="js/components/todoComponents/todoComponent.js"></script>
+    <script src="js/models/todos.js"></script>
+
     <script src="js/basicFunctions.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -76,7 +81,8 @@
             </div>
 
             <!-- BEE'S POST -->
-            <div id="newPostComponent" class="newPostOverlay" style="display: none;"></div>
+            <div id="newComponent" class="newPostOverlay" style="display: none;"></div>
+            <div id="newComment" class="newPostOverlay" style="display: none;"></div>
             <div id="postsComponent" class="containers" style="display: none;">
                 <h2 class="titles">Bee's Posts</h2>
                 <div id="postComponent">
@@ -91,9 +97,9 @@
             </div>
 
             <!-- BEE'S TO DOS  -->
-            <div id="todosComponent" class="containers" style="display: none;">
+            <div id="toDosComponent" class="containers" style="display: none;">
                 <h2 class="titles">Bee's Todos</h2>
-                <div id="todoComponent">
+                <div id="toDoComponent">
                 </div>
             </div>
         </div>

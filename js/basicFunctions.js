@@ -18,13 +18,16 @@ function displayBees(){
     var postsPage = document.getElementById('postsComponent');
     postsPage.style.display = "none";
 
-    var overlayContainer = document.getElementById('newPostComponent');
+    var overlayContainer = document.getElementById('newComponent');
     overlayContainer.innerHTML= "";
     
+    var overlayCommentContainer = document.getElementById('newComment');
+    overlayCommentContainer.innerHTML= "";
+
     var albumPage = document.getElementById('albumsComponent');
     albumPage.style.display = "none";
     
-    var todosComponent = document.getElementById('todosComponent');
+    var todosComponent = document.getElementById('toDosComponent');
     todosComponent.style.display = "none";
 }
 
