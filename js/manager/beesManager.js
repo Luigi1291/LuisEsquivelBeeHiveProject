@@ -56,7 +56,12 @@ beesManager.prototype.onClickPosts = function (bee) {
     var postsPage = document.getElementById('postsComponent');
     postsPage.style.display = "block";
 
-    this.appManager.postsManager.loadUserPosts(bee.id);
+    if(window.getComputedStyle(document.getElementById('btnBackContainer')).getPropertyValue('display') == 'none'){
+        this.loadAllPages(bee);
+    }
+    else{
+        this.appManager.postsManager.loadUserPosts(bee.id);
+    }
 }
 
 beesManager.prototype.onClickAlbums = function (bee) {
@@ -64,7 +69,12 @@ beesManager.prototype.onClickAlbums = function (bee) {
     var albumsPage = document.getElementById('albumsComponent');
     albumsPage.style.display = "block";
 
-    this.appManager.albumsManager.loadAlbumsUser(bee);
+    if(window.getComputedStyle(document.getElementById('btnBackContainer')).getPropertyValue('display') == 'none'){
+        this.loadAllPages(bee);
+    }
+    else{
+        this.appManager.albumsManager.loadAlbumsUser(bee);
+    }
 }
 
 beesManager.prototype.onClickToDos = function (bee) {
@@ -72,11 +82,22 @@ beesManager.prototype.onClickToDos = function (bee) {
     var albumsPage = document.getElementById('toDosComponent');
     albumsPage.style.display = "block";
     
-    this.appManager.todosManager.loadToDos(bee.id);
+    if(window.getComputedStyle(document.getElementById('btnBackContainer')).getPropertyValue('display') == 'none'){
+        this.loadAllPages(bee);
+    }
+    else{
+        this.appManager.todosManager.loadToDos(bee.id);
+    }
 }
 
 beesManager.prototype.getLoggedBee = function () {
     return this.loggedBee;
+}
+
+beesManager.prototype.loadAllPages = function(bee){
+    this.appManager.albumsManager.loadAlbumsUser(bee);
+    this.appManager.todosManager.loadToDos(bee.id);
+    this.appManager.postsManager.loadUserPosts(bee.id);
 }
 
 beesManager.prototype.showResizePage = function(pageResized){
