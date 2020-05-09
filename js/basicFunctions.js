@@ -12,23 +12,23 @@ function displayBees(){
     var beesPage = document.getElementById('beesComponent');
     beesPage.style.display = "block";
     
-    var backBtn = document.getElementById('btnBackContainer');
-    backBtn.style.display = "none";
-
     var postsPage = document.getElementById('postsComponent');
     postsPage.style.display = "none";
-
-    var overlayContainer = document.getElementById('newComponent');
-    overlayContainer.innerHTML= "";
-    
-    var overlayCommentContainer = document.getElementById('newComment');
-    overlayCommentContainer.innerHTML= "";
 
     var albumPage = document.getElementById('albumsComponent');
     albumPage.style.display = "none";
     
     var todosComponent = document.getElementById('toDosComponent');
     todosComponent.style.display = "none";
+
+    var overlayContainer = document.getElementById('newComponent');
+    overlayContainer.innerHTML= "";
+    
+    var overlayToDoContainer = document.getElementById('newToDo');
+    overlayToDoContainer.innerHTML= "";
+
+    var overlayCommentContainer = document.getElementById('newComment');
+    overlayCommentContainer.innerHTML= "";
 }
 
 function hideBees(){

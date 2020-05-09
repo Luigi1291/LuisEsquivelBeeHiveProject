@@ -38,6 +38,9 @@ beesManager.prototype.processResponse = function (text) {
     //console.log(data);
     this.bees = [];
     
+    //Current User
+    this.bees.push(this.getLoggedBee());
+
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             var bee = data[key];
@@ -49,7 +52,7 @@ beesManager.prototype.processResponse = function (text) {
 };
 
 beesManager.prototype.onClickPosts = function (bee) {
-    hideBees();
+    this.showResizePage('postsComponent');
     var postsPage = document.getElementById('postsComponent');
     postsPage.style.display = "block";
 
@@ -57,15 +60,15 @@ beesManager.prototype.onClickPosts = function (bee) {
 }
 
 beesManager.prototype.onClickAlbums = function (bee) {
-    hideBees();
+    this.showResizePage('albumsComponent');
     var albumsPage = document.getElementById('albumsComponent');
     albumsPage.style.display = "block";
-    
+
     this.appManager.albumsManager.loadAlbumsUser(bee);
 }
 
 beesManager.prototype.onClickToDos = function (bee) {
-    hideBees();
+    this.showResizePage('toDosComponent');
     var albumsPage = document.getElementById('toDosComponent');
     albumsPage.style.display = "block";
     
@@ -74,4 +77,32 @@ beesManager.prototype.onClickToDos = function (bee) {
 
 beesManager.prototype.getLoggedBee = function () {
     return this.loggedBee;
+}
+
+beesManager.prototype.showResizePage = function(pageResized){
+    if(window.getComputedStyle(document.getElementById('btnBackContainer')).getPropertyValue('display') == 'none'){
+        
+        //Reset Overlay
+        switch (pageResized) {
+            case 'postsComponent':
+                this.appManager.postsManager.resetOverlay();    
+                break;
+        
+            case 'toDosComponent':
+                this.appManager.todosManager.resetOverlay();
+                break;
+        }
+
+        var divPages = document.getElementsByClassName('containers');
+        for (let index = 0; index < divPages.length; index++) {
+            const element = divPages[index];
+
+            if(element.id != 'beesComponent'){
+                element.style.display = "none";
+            }
+        }
+    }
+    else{
+        hideBees();    
+    }
 }

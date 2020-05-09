@@ -33,6 +33,10 @@ todosManager.prototype.processToDosResponse = function (text) {
     //  console.log(data);
     this.toDos = [];
     
+    //Current User
+    this.toDos.push(new ToDo('1000',true,'Testing ToDo','0'));
+    this.toDos.push(new ToDo('1001',false,'Pending ToDo','0'));
+
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             var todo = data[key];
@@ -60,5 +64,5 @@ todosManager.prototype.submitToDo = function(toDo){
 }
 
 todosManager.prototype.resetOverlay = function(){
-    document.getElementById('newComponent').innerHTML = '';
+    document.getElementById('newToDo').innerHTML = '';
 }

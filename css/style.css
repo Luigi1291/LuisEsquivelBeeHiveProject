@@ -86,14 +86,8 @@ img{
     /*padding-bottom: 10px;*/
 }
 
-.backContainerShow{
+.backContainer{
     width: 20%;
-    display: inline-block;
-}
-
-.backContainerHide{
-    width: 20%;
-    display: none;
 }
 
 .titleContainer{
@@ -273,7 +267,6 @@ p.photoTitle{
 /***** TODOS PAGE STYLE *****/
 .toDoComponent{
     display: flex;
-    flex-wrap: wrap;
     align-content: space-between;
     border-color: black;
     border-width: 2px;
@@ -332,9 +325,9 @@ p.photoTitle{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
     height: 30%;
-    margin: 20px;
+    margin: auto;
 }
 
 .overlay-Title{
@@ -387,3 +380,40 @@ p.photoTitle{
     width: 40%;
 }
 /***** OVERLAY PAGES STYLE END *****/
+
+/***** MEDIA QUERIES *****/
+@media screen and (min-width: 700px){
+    #beesComponent{
+        display: block !important;
+    }
+
+    .backContainer{
+        display: none !important;
+    }
+    
+    .container-content{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .overlay-textContainer{
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1250px) {
+    .containers{
+        width: 48%;
+    }
+}
+
+@media screen and (min-width: 1251px){
+    .containers{
+        width: 24%;
+        display: block !important;
+    }
+}
+/***** MEDIA QUERIES END *****/

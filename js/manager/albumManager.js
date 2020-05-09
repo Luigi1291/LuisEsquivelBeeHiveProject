@@ -39,6 +39,10 @@ albumsManager.prototype.processAlbumResponse = function (text) {
     //console.log(data);
     this.albums = [];
     
+    //Current User
+    this.albums.push(new Album('1000','Testing Album Title','0',[]));
+    this.albums.push(new Album('1001','Testing 2nd Album','0',[]));
+
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             var album = data[key];
@@ -79,6 +83,12 @@ albumsManager.prototype.processPhotoResponse = function (text) {
     //console.log(data);
     this.photos = [];
     
+    //Current User
+    this.photos.push(new Photo('1000','1000','Original Photo','https://via.placeholder.com/150/771796'));
+    this.photos.push(new Photo('1001','1000','New Photo','https://via.placeholder.com/150/92c952'));
+    this.photos.push(new Photo('1002','1001','My Photo','https://via.placeholder.com/150/24f355'));
+    this.photos.push(new Photo('1003','1001','Photo','https://via.placeholder.com/150/d32776'));
+
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             var photo = data[key];

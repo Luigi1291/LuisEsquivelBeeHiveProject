@@ -23,7 +23,7 @@ function toDosComponent(container, toDos, beeId, submitCallBack){
     var newToDoButton = document.createElement('div');
     newToDoButton.className = 'newToDoButton';
     newToDoButton.innerText = "New ToDo";
-    newToDoButton.onclick = this.newToDoComponent.showNewPostOverlay;
+    newToDoButton.onclick = this.newToDoComponent.showNewToDoOverlay;
     
     this.container.appendChild(newToDoButton);
 }

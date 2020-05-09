@@ -43,7 +43,7 @@
 <body>
     <div id="appComponent" class="mainContainer">
         <div id="headerComponent" class="header-container">
-            <div id='btnBackContainer' class="backContainerHide" onclick="displayBees()">
+            <div id='btnBackContainer' class="backContainer" onclick="displayBees()">
                 <img role="button" src="images/backBtn.png" class="backButton">
             </div>
             <div class="titleContainer">
@@ -79,10 +79,13 @@
                 <div id="beeComponent">
                 </div>
             </div>
+            
+            <!-- OVERLAY -->
+            <div id="newComment" class="newPostOverlay" style="display: none;"></div>
+            <div id="newComponent" class="newPostOverlay" style="display: none;"></div>
+            <div id="newToDo" class="newPostOverlay" style="display: none;"></div>
 
             <!-- BEE'S POST -->
-            <div id="newComponent" class="newPostOverlay" style="display: none;"></div>
-            <div id="newComment" class="newPostOverlay" style="display: none;"></div>
             <div id="postsComponent" class="containers" style="display: none;">
                 <h2 class="titles">Bee's Posts</h2>
                 <div id="postComponent">

@@ -34,6 +34,10 @@ postsManager.prototype.processPostsResponse = function (text) {
     //console.log(data);
     this.posts = [];
     
+    //Current User
+    this.posts.push(new Post(1000,0,'Prueba Post', 'Body Prueba Test', []));
+    this.posts.push(new Post(1001,0,'SEGUNDA PRUEBA POST', 'BODY 2 PRUEBA', []));
+
     for (const key in data) {
         if (data.hasOwnProperty(key)) {
             var post = data[key];
@@ -72,6 +76,10 @@ postsManager.prototype.processCommentsResponse = function (text) {
     var data = JSON.parse(text);
     //console.log(data);
     this.comments = [];
+    
+    //Current User
+    this.comments.push(new BeeComment(1000,1000, 'Test Comment', 'Body Prueba Test', 'luigi1291@gmail.com'));
+    this.comments.push(new BeeComment(10001,1001,'SEGUNDA PRUEBA COMMENT', 'BODY 2 PRUEBA', 'luigi1291@gmail.com'));
     
     for (const key in data) {
         if (data.hasOwnProperty(key)) {

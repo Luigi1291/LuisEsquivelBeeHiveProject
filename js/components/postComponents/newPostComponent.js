@@ -2,9 +2,15 @@ function newPostComponent(entry, submitCallBack, overlayType, loggedBee){
     var overlayContainer = document.getElementById('newComponent');
     this.overlayContainer = overlayContainer;
 
-    if(overlayType == 2){
-        this.overlayContainer = document.getElementById('newComment');
+    switch (overlayType) {
+        case 2:
+            this.overlayContainer = document.getElementById('newComment');
+            break;
+        case 3:
+            this.overlayContainer = document.getElementById('newToDo');
+            break;
     }
+
     this.entry = entry;
     this.submitCallBack = submitCallBack;
     this.overlayType = overlayType;
@@ -69,7 +75,6 @@ newPostComponent.prototype.renderOverlay = function(){
     btnCancel.className = 'overlay-button-cancel';
     btnCancel.innerText = 'Cancel';
     btnCancel.onclick = this.hideNewPostOverlay.bind(this);
-    this.showNewPostOverlay.bind(this);
     
     buttonContainer.appendChild(btnCancel);
 
@@ -113,9 +118,13 @@ newPostComponent.prototype.showNewCommentOverlay = function (){
     overlayContainer.style.display = 'flex';
 }
 
-newPostComponent.prototype.hideNewPostOverlay = function (){
-    this.overlayContainer.style.display = 'none';
+newPostComponent.prototype.showNewToDoOverlay = function (){
+    var overlayContainer = document.getElementById('newToDo');
+    overlayContainer.style.display = 'flex';
+}
 
+newPostComponent.prototype.hideNewPostOverlay = function (){
     this.inputTitle.value = '';
     this.inputBody.value = '';
+    this.overlayContainer.style.display = 'none';
 }
